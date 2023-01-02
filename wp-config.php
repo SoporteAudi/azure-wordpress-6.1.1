@@ -1,4 +1,5 @@
 <?php
+ $_SERVER["HTTPS"] = "on";
 /**
  * The base configuration for WordPress
  *
@@ -19,8 +20,8 @@
  */
 
 /** Using environment variables for DB connection information */
-$connectstr_dbhost = 'henutsenserverexp.mysql.database.azure.com';
-$connectstr_dbname = 'sys';
+$connectstr_dbhost = 'mysqldb-hen-wp-tst-eastus.mysql.database.azure.com';
+$connectstr_dbname = 'henutsendb';
 $connectstr_dbusername = 'henutsen';
 $connectstr_dbpassword = 'H3nu7s3n*';
 
@@ -77,7 +78,6 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  * well-privileged user account.
  * Note : If your plugin or theme you use with your app requires editing of the files , comment the line below for 'DISALLOW_FILE_EDIT'
  */
-define('DISALLOW_FILE_EDIT', true);
 
 /**#@-*/
 
@@ -108,8 +108,6 @@ define( 'WP_DEBUG', false );
 /** Relative URLs for swapping across App Service deployment slots */
 define('WP_HOME', 'http://'. filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
 define('WP_SITEURL', 'http://'. filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
-define('WP_CONTENT_URL', '/wp-content');
-define('DOMAIN_CURRENT_SITE', filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
 
 
 /* That's all, stop editing! Happy publishing. */
