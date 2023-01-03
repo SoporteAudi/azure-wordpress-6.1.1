@@ -1,4 +1,5 @@
 <?php
+ $_SERVER["HTTPS"] = "on";
 /**
  * The base configuration for WordPress
  *
@@ -19,19 +20,11 @@
  */
 
 /** Using environment variables for DB connection information */
-$connectstr_dbhost = '';
-$connectstr_dbname = '';
-$connectstr_dbusername = '';
-$connectstr_dbpassword = '';
-foreach ($_SERVER as $key => $value) {
-    if (strpos($key, "MYSQLCONNSTR_") !== 0) {
-        continue;
-    }
-    $connectstr_dbhost = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
-    $connectstr_dbname = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value);
-    $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
-    $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
-}
+$connectstr_dbhost = 'mysqldb-hen-wp-prd-eastus.mysql.database.azure.com';
+$connectstr_dbname = 'henutsendb';
+$connectstr_dbusername = 'henutsen';
+$connectstr_dbpassword = 'H3nu7s3n*';
+
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
@@ -85,7 +78,6 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  * well-privileged user account.
  * Note : If your plugin or theme you use with your app requires editing of the files , comment the line below for 'DISALLOW_FILE_EDIT'
  */
-define('DISALLOW_FILE_EDIT', true);
 
 /**#@-*/
 
@@ -116,8 +108,6 @@ define( 'WP_DEBUG', false );
 /** Relative URLs for swapping across App Service deployment slots */
 define('WP_HOME', 'http://'. filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
 define('WP_SITEURL', 'http://'. filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
-define('WP_CONTENT_URL', '/wp-content');
-define('DOMAIN_CURRENT_SITE', filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
 
 
 /* That's all, stop editing! Happy publishing. */
